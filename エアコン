@@ -1,0 +1,623 @@
+DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エアコンクリーニング お見積もり | 株式会社スウィーパー福島</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .font-gothic { font-family: "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif; }
+        .font-mincho { font-family: "Yu Mincho", "MS PMincho", serif; }
+        html { scroll-behavior: smooth; }
+        .price-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.12); }
+        .price-card { transition: transform 0.2s, box-shadow 0.2s; }
+        .step-line::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -24px;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 24px;
+            background: #60a5fa;
+        }
+        .step-item:last-child .step-line::after { display: none; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-on-scroll { opacity: 0; }
+        .animate-on-scroll.visible { animation: fadeInUp 0.5s ease forwards; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a' },
+                        accent: { 50: '#fefce8', 100: '#fef9c3', 200: '#fef08a', 300: '#fde047', 400: '#facc15', 500: '#eab308' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-gothic text-gray-800">
+ 
+    <!-- ヘッダー -->
+    <header class="bg-gradient-to-br from-primary-700 via-primary-600 to-blue-500 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 right-10 text-[200px] text-white"><i class="fas fa-snowflake"></i></div>
+            <div class="absolute bottom-5 left-20 text-[120px] text-white"><i class="fas fa-wind"></i></div>
+        </div>
+        <div class="max-w-5xl mx-auto px-6 py-16 relative z-10">
+            <div class="mb-4">
+                <span class="bg-accent-400 text-gray-900 text-sm font-bold px-4 py-1.5 rounded-full">
+                    <i class="fas fa-sparkles mr-1"></i>プロのエアコン洗浄
+                </span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-black leading-tight mb-4 font-mincho">
+                エアコンクリーニング<br>
+                <span class="text-accent-300">かんたんお見積もり</span>
+            </h1>
+            <p class="text-lg opacity-90 max-w-2xl leading-relaxed">
+                カビ・ホコリ・嫌なニオイを徹底除去。<br>
+                お使いのエアコンのタイプと台数を選ぶだけで、概算料金がすぐにわかります。
+            </p>
+            <div class="mt-8 flex gap-4 flex-wrap">
+                <a href="#estimate" class="bg-accent-400 hover:bg-accent-300 text-gray-900 font-bold px-8 py-3 rounded-lg transition inline-flex items-center">
+                    <i class="fas fa-calculator mr-2"></i>今すぐ見積もり
+                </a>
+                <a href="#service-flow" class="bg-white/20 hover:bg-white/30 text-white font-bold px-8 py-3 rounded-lg transition inline-flex items-center backdrop-blur">
+                    <i class="fas fa-list-ol mr-2"></i>サービスの流れ
+                </a>
+            </div>
+        </div>
+    </header>
+ 
+    <!-- 選ばれる理由 -->
+    <section class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-2xl font-bold text-center mb-2">スウィーパー福島の<span class="text-primary-600">エアコンクリーニング</span></h2>
+            <p class="text-center text-gray-500 mb-10 text-sm">清掃のプロが、ご家庭のエアコンを徹底洗浄いたします</p>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="text-center p-6 rounded-xl bg-primary-50 border border-primary-100">
+                    <div class="w-16 h-16 bg-primary-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fas fa-spray-can-sparkles"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">高圧洗浄で徹底除去</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">専用の高圧洗浄機と洗剤で、熱交換器やファンに付着したカビ・ホコリ・油汚れを根こそぎ洗い流します。</p>
+                </div>
+                <div class="text-center p-6 rounded-xl bg-primary-50 border border-primary-100">
+                    <div class="w-16 h-16 bg-primary-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">抗菌・防カビ仕上げ</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">洗浄後は抗菌・防カビコートを施工。清潔な状態が長持ちし、嫌なニオイの再発を防ぎます。</p>
+                </div>
+                <div class="text-center p-6 rounded-xl bg-primary-50 border border-primary-100">
+                    <div class="w-16 h-16 bg-primary-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">経験豊富なスタッフ</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">清掃業界で培った確かな技術力。作業前にエアコンの状態をしっかり確認し、丁寧に施工いたします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- 料金表 -->
+    <section class="py-16 bg-gray-50" id="pricing">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-2xl font-bold text-center mb-2"><i class="fas fa-tags text-primary-500 mr-2"></i>料金一覧</h2>
+            <p class="text-center text-gray-500 mb-10 text-sm">すべて税込価格です ／ 2台以上のご依頼でお得な割引あり</p>
+ 
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <!-- 壁掛け通常 -->
+                <div class="price-card bg-white rounded-2xl shadow-md overflow-hidden border border-gray-200">
+                    <div class="bg-primary-600 text-white p-4 text-center">
+                        <i class="fas fa-wind text-3xl mb-2"></i>
+                        <h3 class="font-bold text-lg">壁掛けタイプ</h3>
+                        <p class="text-xs opacity-80">お掃除機能なし</p>
+                    </div>
+                    <div class="p-6 text-center">
+                        <p class="text-gray-500 text-sm mb-1">1台あたり</p>
+                        <p class="text-4xl font-black text-primary-700 mb-1">¥14,300</p>
+                        <p class="text-xs text-gray-400 mb-4">（税込）</p>
+                        <ul class="text-left text-sm space-y-2 text-gray-600">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>高圧洗浄</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>抗菌コート込み</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>外装パネル清掃</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>作業時間 約90分</li>
+                        </ul>
+                        <div class="mt-4 bg-accent-50 text-accent-500 text-xs font-bold p-2 rounded">
+                            <i class="fas fa-percent mr-1"></i>2台目以降 ¥11,550／台
+                        </div>
+                    </div>
+                </div>
+ 
+                <!-- お掃除機能付き -->
+                <div class="price-card bg-white rounded-2xl shadow-md overflow-hidden border-2 border-primary-500 relative">
+                    <div class="absolute -top-0 left-1/2 -translate-x-1/2 bg-red-500 text-white text-xs font-bold px-4 py-1 rounded-b-lg">人気</div>
+                    <div class="bg-primary-700 text-white p-4 text-center">
+                        <i class="fas fa-robot text-3xl mb-2"></i>
+                        <h3 class="font-bold text-lg">壁掛けタイプ</h3>
+                        <p class="text-xs opacity-80">お掃除機能付き</p>
+                    </div>
+                    <div class="p-6 text-center">
+                        <p class="text-gray-500 text-sm mb-1">1台あたり</p>
+                        <p class="text-4xl font-black text-primary-700 mb-1">¥25,300</p>
+                        <p class="text-xs text-gray-400 mb-4">（税込）</p>
+                        <ul class="text-left text-sm space-y-2 text-gray-600">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>高圧洗浄</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>抗菌コート込み</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>お掃除ユニット分解洗浄</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>作業時間 約120〜180分</li>
+                        </ul>
+                        <div class="mt-4 bg-accent-50 text-accent-500 text-xs font-bold p-2 rounded">
+                            <i class="fas fa-percent mr-1"></i>2台目以降 ¥22,550／台
+                        </div>
+                    </div>
+                </div>
+ 
+                <!-- 天井埋込 -->
+                <div class="price-card bg-white rounded-2xl shadow-md overflow-hidden border border-gray-200">
+                    <div class="bg-gray-700 text-white p-4 text-center">
+                        <i class="fas fa-building text-3xl mb-2"></i>
+                        <h3 class="font-bold text-lg">天井埋込タイプ</h3>
+                        <p class="text-xs opacity-80">1・2方向吹出し</p>
+                    </div>
+                    <div class="p-6 text-center">
+                        <p class="text-gray-500 text-sm mb-1">1台あたり</p>
+                        <p class="text-4xl font-black text-primary-700 mb-1">¥38,500</p>
+                        <p class="text-xs text-gray-400 mb-4">（税込）</p>
+                        <ul class="text-left text-sm space-y-2 text-gray-600">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>高圧洗浄</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>抗菌コート込み</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>ドレンパン洗浄</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>作業時間 約120〜150分</li>
+                        </ul>
+                        <div class="mt-4 bg-accent-50 text-accent-500 text-xs font-bold p-2 rounded">
+                            <i class="fas fa-percent mr-1"></i>2台目以降 ¥31,900／台
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+            <!-- オプション -->
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                <h3 class="font-bold text-lg mb-4"><i class="fas fa-plus-circle text-primary-500 mr-2"></i>オプションメニュー</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                        <div class="w-10 h-10 bg-green-100 text-green-600 rounded-lg flex items-center justify-center shrink-0">
+                            <i class="fas fa-shield-halved"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-sm">防カビコーティング</p>
+                            <p class="text-xs text-gray-500">カビの再発生を抑制する特殊コーティング</p>
+                            <p class="text-primary-600 font-bold mt-1">+¥3,300／台</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                        <div class="w-10 h-10 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center shrink-0">
+                            <i class="fas fa-fan"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-sm">室外機洗浄</p>
+                            <p class="text-xs text-gray-500">室外機の汚れも除去し冷暖房効率UP</p>
+                            <p class="text-primary-600 font-bold mt-1">+¥5,500／台</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- 見積もりシミュレーター -->
+    <section class="py-16 bg-primary-700" id="estimate">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-2xl font-bold text-center text-white mb-2"><i class="fas fa-calculator mr-2"></i>かんたんお見積もり</h2>
+            <p class="text-center text-primary-200 mb-8 text-sm">エアコンのタイプと台数を選択してください</p>
+ 
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <!-- 壁掛け通常 -->
+                <div class="mb-6 pb-6 border-b border-gray-200">
+                    <div class="flex items-center justify-between flex-wrap gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-primary-100 text-primary-600 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-wind"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold">壁掛けタイプ（通常）</p>
+                                <p class="text-xs text-gray-500">お掃除機能なし ¥14,300／台</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button onclick="changeQty('wall', -1)" class="w-9 h-9 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center text-lg font-bold transition">−</button>
+                            <span id="qty-wall" class="text-xl font-bold w-8 text-center">0</span>
+                            <button onclick="changeQty('wall', 1)" class="w-9 h-9 bg-primary-500 hover:bg-primary-600 text-white rounded-full flex items-center justify-center text-lg font-bold transition">+</button>
+                        </div>
+                    </div>
+                </div>
+ 
+                <!-- お掃除機能付き -->
+                <div class="mb-6 pb-6 border-b border-gray-200">
+                    <div class="flex items-center justify-between flex-wrap gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-primary-100 text-primary-600 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold">壁掛けタイプ（お掃除機能付き）</p>
+                                <p class="text-xs text-gray-500">¥25,300／台</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button onclick="changeQty('auto', -1)" class="w-9 h-9 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center text-lg font-bold transition">−</button>
+                            <span id="qty-auto" class="text-xl font-bold w-8 text-center">0</span>
+                            <button onclick="changeQty('auto', 1)" class="w-9 h-9 bg-primary-500 hover:bg-primary-600 text-white rounded-full flex items-center justify-center text-lg font-bold transition">+</button>
+                        </div>
+                    </div>
+                </div>
+ 
+                <!-- 天井埋込 -->
+                <div class="mb-6 pb-6 border-b border-gray-200">
+                    <div class="flex items-center justify-between flex-wrap gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-gray-200 text-gray-600 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold">天井埋込タイプ</p>
+                                <p class="text-xs text-gray-500">1・2方向 ¥38,500／台</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button onclick="changeQty('ceiling', -1)" class="w-9 h-9 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center text-lg font-bold transition">−</button>
+                            <span id="qty-ceiling" class="text-xl font-bold w-8 text-center">0</span>
+                            <button onclick="changeQty('ceiling', 1)" class="w-9 h-9 bg-primary-500 hover:bg-primary-600 text-white rounded-full flex items-center justify-center text-lg font-bold transition">+</button>
+                        </div>
+                    </div>
+                </div>
+ 
+                <!-- オプション -->
+                <div class="mb-6 pb-6 border-b border-gray-200">
+                    <p class="font-bold text-sm text-gray-700 mb-3"><i class="fas fa-sliders mr-1"></i>オプション</p>
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" id="opt-coat" onchange="calcTotal()" class="w-5 h-5 accent-primary-600 rounded">
+                            <span class="text-sm">防カビコーティング（+¥3,300／台）</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" id="opt-outdoor" onchange="calcTotal()" class="w-5 h-5 accent-primary-600 rounded">
+                            <span class="text-sm">室外機洗浄（+¥5,500／台）</span>
+                        </label>
+                    </div>
+                </div>
+ 
+                <!-- 見積もり結果 -->
+                <div class="bg-gradient-to-r from-primary-50 to-blue-50 rounded-xl p-6 text-center">
+                    <p class="text-sm text-gray-600 mb-1">お見積もり概算金額</p>
+                    <p class="text-5xl font-black text-primary-700" id="total-price">¥0</p>
+                    <p class="text-xs text-gray-400 mt-1">（税込）</p>
+                    <div id="discount-badge" class="hidden mt-3 inline-block bg-red-500 text-white text-xs font-bold px-4 py-1.5 rounded-full">
+                        <i class="fas fa-tag mr-1"></i><span id="discount-amount"></span> おトク！
+                    </div>
+                    <div id="estimate-detail" class="mt-4 text-left text-xs text-gray-500 space-y-1"></div>
+                </div>
+ 
+                <p class="text-xs text-gray-400 mt-4 text-center">
+                    ※ 上記は概算金額です。エアコンの機種・設置状況により変動する場合があります。<br>
+                    ※ 正確な金額は無料の訪問見積もりにてご案内いたします。
+                </p>
+ 
+                <div class="mt-6 text-center">
+                    <a href="tel:0123-45-6789" class="inline-flex items-center bg-primary-600 hover:bg-primary-700 text-white font-bold px-8 py-3 rounded-lg transition text-lg">
+                        <i class="fas fa-phone mr-2"></i>無料見積もりを申し込む
+                    </a>
+                    <p class="text-xs text-gray-400 mt-2">0123-45-6789（平日 9:00〜18:00）</p>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- サービスの流れ -->
+    <section class="py-16 bg-white" id="service-flow">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl font-bold text-center mb-2"><i class="fas fa-list-ol text-primary-500 mr-2"></i>サービスの流れ</h2>
+            <p class="text-center text-gray-500 mb-10 text-sm">お問い合わせから作業完了まで</p>
+ 
+            <div class="grid md:grid-cols-5 gap-4">
+                <div class="text-center step-item">
+                    <div class="step-line relative">
+                        <div class="w-16 h-16 bg-primary-600 text-white rounded-full flex items-center justify-center mx-auto text-2xl mb-3">
+                            <i class="fas fa-phone-volume"></i>
+                        </div>
+                    </div>
+                    <div class="bg-primary-600 text-white text-xs font-bold w-7 h-7 rounded-full flex items-center justify-center mx-auto mb-2">1</div>
+                    <h4 class="font-bold text-sm mb-1">お問い合わせ</h4>
+                    <p class="text-xs text-gray-500">お電話またはWebフォームからお気軽にご連絡ください。</p>
+                </div>
+ 
+                <div class="text-center step-item">
+                    <div class="step-line relative">
+                        <div class="w-16 h-16 bg-primary-500 text-white rounded-full flex items-center justify-center mx-auto text-2xl mb-3">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                    </div>
+                    <div class="bg-primary-600 text-white text-xs font-bold w-7 h-7 rounded-full flex items-center justify-center mx-auto mb-2">2</div>
+                    <h4 class="font-bold text-sm mb-1">訪問お見積もり</h4>
+                    <p class="text-xs text-gray-500">スタッフがご訪問し、エアコンの状態を確認。正確なお見積もりをご提示します。</p>
+                </div>
+ 
+                <div class="text-center step-item">
+                    <div class="step-line relative">
+                        <div class="w-16 h-16 bg-primary-400 text-white rounded-full flex items-center justify-center mx-auto text-2xl mb-3">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                    </div>
+                    <div class="bg-primary-600 text-white text-xs font-bold w-7 h-7 rounded-full flex items-center justify-center mx-auto mb-2">3</div>
+                    <h4 class="font-bold text-sm mb-1">日程調整</h4>
+                    <p class="text-xs text-gray-500">お客様のご都合に合わせて作業日を決定いたします。</p>
+                </div>
+ 
+                <div class="text-center step-item">
+                    <div class="step-line relative">
+                        <div class="w-16 h-16 bg-blue-400 text-white rounded-full flex items-center justify-center mx-auto text-2xl mb-3">
+                            <i class="fas fa-hands-bubbles"></i>
+                        </div>
+                    </div>
+                    <div class="bg-primary-600 text-white text-xs font-bold w-7 h-7 rounded-full flex items-center justify-center mx-auto mb-2">4</div>
+                    <h4 class="font-bold text-sm mb-1">洗浄作業</h4>
+                    <p class="text-xs text-gray-500">養生・分解・高圧洗浄・抗菌コート・組み立てまで丁寧に実施。</p>
+                </div>
+ 
+                <div class="text-center step-item">
+                    <div class="step-line relative">
+                        <div class="w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto text-2xl mb-3">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="bg-primary-600 text-white text-xs font-bold w-7 h-7 rounded-full flex items-center justify-center mx-auto mb-2">5</div>
+                    <h4 class="font-bold text-sm mb-1">完了・お支払い</h4>
+                    <p class="text-xs text-gray-500">動作確認後、ビフォーアフターをご確認いただきお支払い。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- Before / After -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-2xl font-bold text-center mb-2"><i class="fas fa-images text-primary-500 mr-2"></i>施工事例</h2>
+            <p class="text-center text-gray-500 mb-10 text-sm">実際のクリーニング前後の比較です</p>
+ 
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- 事例1 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200">
+                    <div class="p-4 bg-gray-100 border-b border-gray-200">
+                        <span class="bg-primary-600 text-white text-xs font-bold px-3 py-1 rounded-full">壁掛けタイプ</span>
+                        <span class="text-sm text-gray-600 ml-2">ご使用3年・お掃除機能なし</span>
+                    </div>
+                    <div class="p-4 flex gap-3 items-center">
+                        <div class="w-1/2 relative aspect-[4/3] bg-gray-200 rounded overflow-hidden">
+                            <img src="https://placehold.co/400x300/e5e7eb/9ca3af?text=Before" alt="洗浄前" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-gray-800 text-white text-xs px-2 py-0.5 rounded">Before</span>
+                        </div>
+                        <div class="text-primary-500 text-xl shrink-0"><i class="fas fa-arrow-right"></i></div>
+                        <div class="w-1/2 relative aspect-[4/3] bg-blue-50 rounded overflow-hidden border border-primary-300">
+                            <img src="https://placehold.co/400x300/dbeafe/3b82f6?text=After" alt="洗浄後" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-primary-600 text-white text-xs px-2 py-0.5 rounded font-bold">After</span>
+                        </div>
+                    </div>
+                    <p class="px-4 pb-4 text-xs text-gray-500">熱交換器にカビが繁殖していましたが、高圧洗浄で除去。ニオイもなくなりました。</p>
+                </div>
+ 
+                <!-- 事例2 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200">
+                    <div class="p-4 bg-gray-100 border-b border-gray-200">
+                        <span class="bg-gray-700 text-white text-xs font-bold px-3 py-1 rounded-full">天井埋込タイプ</span>
+                        <span class="text-sm text-gray-600 ml-2">飲食店・5年未清掃</span>
+                    </div>
+                    <div class="p-4 flex gap-3 items-center">
+                        <div class="w-1/2 relative aspect-[4/3] bg-gray-200 rounded overflow-hidden">
+                            <img src="https://placehold.co/400x300/e5e7eb/9ca3af?text=Before" alt="洗浄前" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-gray-800 text-white text-xs px-2 py-0.5 rounded">Before</span>
+                        </div>
+                        <div class="text-primary-500 text-xl shrink-0"><i class="fas fa-arrow-right"></i></div>
+                        <div class="w-1/2 relative aspect-[4/3] bg-blue-50 rounded overflow-hidden border border-primary-300">
+                            <img src="https://placehold.co/400x300/dbeafe/3b82f6?text=After" alt="洗浄後" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-primary-600 text-white text-xs px-2 py-0.5 rounded font-bold">After</span>
+                        </div>
+                    </div>
+                    <p class="px-4 pb-4 text-xs text-gray-500">油汚れとホコリが蓄積し冷房効率が低下していました。洗浄後は風量・冷却性能が回復。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- よくある質問 -->
+    <section class="py-16 bg-white">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-2xl font-bold text-center mb-2"><i class="fas fa-circle-question text-primary-500 mr-2"></i>よくあるご質問</h2>
+            <p class="text-center text-gray-500 mb-10 text-sm">お客様からいただくご質問をまとめました</p>
+ 
+            <div class="space-y-4">
+                <details class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden group" open>
+                    <summary class="p-5 cursor-pointer font-bold flex items-center justify-between hover:bg-gray-100 transition">
+                        <span><i class="fas fa-q text-primary-500 mr-2"></i>作業時間はどのくらいですか？</span>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+                        壁掛けタイプ（お掃除機能なし）で約90分、お掃除機能付きで約2〜3時間、天井埋込タイプで約2〜2.5時間が目安です。エアコンの汚れ具合や設置環境により前後する場合があります。
+                    </div>
+                </details>
+ 
+                <details class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden group">
+                    <summary class="p-5 cursor-pointer font-bold flex items-center justify-between hover:bg-gray-100 transition">
+                        <span><i class="fas fa-q text-primary-500 mr-2"></i>自分のエアコンがお掃除機能付きか分かりません。</span>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+                        リモコンに「フィルター掃除」「手動掃除」などのボタンがある場合はお掃除機能付きの可能性が高いです。ご不明な場合は、メーカーと型番をお伝えいただければお調べいたします。訪問見積もり時にも確認いたしますのでご安心ください。
+                    </div>
+                </details>
+ 
+                <details class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden group">
+                    <summary class="p-5 cursor-pointer font-bold flex items-center justify-between hover:bg-gray-100 transition">
+                        <span><i class="fas fa-q text-primary-500 mr-2"></i>どのくらいの頻度で清掃すべきですか？</span>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+                        一般的には1〜2年に1回が目安です。ペットを飼っているご家庭や、キッチン近くのエアコン、喫煙環境では1年に1回をおすすめしています。定期的な清掃で電気代の節約にもつながります。
+                    </div>
+                </details>
+ 
+                <details class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden group">
+                    <summary class="p-5 cursor-pointer font-bold flex items-center justify-between hover:bg-gray-100 transition">
+                        <span><i class="fas fa-q text-primary-500 mr-2"></i>古いエアコンでも対応できますか？</span>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+                        製造から10年以上経過したエアコンは、部品の劣化により作業中に不具合が生じる場合があります。万が一故障した際に部品調達が難しいケースもあるため、事前の訪問見積もりで状態を確認させていただきます。
+                    </div>
+                </details>
+ 
+                <details class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden group">
+                    <summary class="p-5 cursor-pointer font-bold flex items-center justify-between hover:bg-gray-100 transition">
+                        <span><i class="fas fa-q text-primary-500 mr-2"></i>駐車場がない場合はどうなりますか？</span>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+                        サービスカーの駐車スペースをご用意いただけない場合は、近隣の有料駐車場を利用させていただきます。その際の駐車料金はお客様のご負担となりますのでご了承ください。
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- CTA -->
+    <section class="py-16 bg-gradient-to-r from-primary-700 to-blue-600 text-white text-center">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-3 font-mincho">まずは無料見積もりから</h2>
+            <p class="text-primary-200 mb-8">お見積もりは無料です。お気軽にお問い合わせください。</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="tel:0123-45-6789" class="bg-accent-400 hover:bg-accent-300 text-gray-900 font-bold px-10 py-4 rounded-lg transition text-xl inline-flex items-center">
+                    <i class="fas fa-phone mr-3"></i>0123-45-6789
+                </a>
+            </div>
+            <p class="text-sm text-primary-200 mt-4">受付時間：平日 9:00〜18:00</p>
+        </div>
+    </section>
+ 
+    <!-- フッター -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>
+                    <p class="font-bold text-lg">株式会社スウィーパー福島</p>
+                    <p class="text-sm text-gray-400">エアコンクリーニング・グリストラップ清掃</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-accent-400 font-bold text-xl">0123-45-6789</p>
+                    <p class="text-xs text-gray-400">受付時間：平日 9:00〜18:00</p>
+                </div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-700 text-center text-xs text-gray-500">
+                &copy; 2026 株式会社スウィーパー福島 All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+ 
+    <script>
+        const prices = {
+            wall: { first: 14300, additional: 11550 },
+            auto: { first: 25300, additional: 22550 },
+            ceiling: { first: 38500, additional: 31900 }
+        };
+        const options = {
+            coat: 3300,
+            outdoor: 5500
+        };
+        const qty = { wall: 0, auto: 0, ceiling: 0 };
+ 
+        function changeQty(type, delta) {
+            qty[type] = Math.max(0, qty[type] + delta);
+            document.getElementById('qty-' + type).textContent = qty[type];
+            calcTotal();
+        }
+ 
+        function calcTotal() {
+            const totalUnits = qty.wall + qty.auto + qty.ceiling;
+            let total = 0;
+            let totalWithoutDiscount = 0;
+            const details = [];
+ 
+            for (const [type, count] of Object.entries(qty)) {
+                if (count === 0) continue;
+                const p = prices[type];
+                const label = type === 'wall' ? '壁掛け（通常）' : type === 'auto' ? '壁掛け（お掃除機能付）' : '天井埋込';
+ 
+                if (count === 1) {
+                    total += p.first;
+                    totalWithoutDiscount += p.first;
+                    details.push(label + ' × 1台 = ¥' + p.first.toLocaleString());
+                } else {
+                    const subtotal = p.first + p.additional * (count - 1);
+                    const fullPrice = p.first * count;
+                    total += subtotal;
+                    totalWithoutDiscount += fullPrice;
+                    details.push(label + ' × ' + count + '台 = ¥' + subtotal.toLocaleString() + '（2台目以降割引適用）');
+                }
+            }
+ 
+            const coatChecked = document.getElementById('opt-coat').checked;
+            const outdoorChecked = document.getElementById('opt-outdoor').checked;
+ 
+            if (coatChecked && totalUnits > 0) {
+                const coatTotal = options.coat * totalUnits;
+                total += coatTotal;
+                totalWithoutDiscount += coatTotal;
+                details.push('防カビコーティング × ' + totalUnits + '台 = ¥' + coatTotal.toLocaleString());
+            }
+            if (outdoorChecked && totalUnits > 0) {
+                const outdoorTotal = options.outdoor * totalUnits;
+                total += outdoorTotal;
+                totalWithoutDiscount += outdoorTotal;
+                details.push('室外機洗浄 × ' + totalUnits + '台 = ¥' + outdoorTotal.toLocaleString());
+            }
+ 
+            document.getElementById('total-price').textContent = '¥' + total.toLocaleString();
+ 
+            const detailEl = document.getElementById('estimate-detail');
+            if (details.length > 0) {
+                detailEl.innerHTML = details.map(d => '<p>' + d + '</p>').join('');
+            } else {
+                detailEl.innerHTML = '';
+            }
+ 
+            const discount = totalWithoutDiscount - total;
+            const badge = document.getElementById('discount-badge');
+            if (discount > 0) {
+                document.getElementById('discount-amount').textContent = '¥' + discount.toLocaleString();
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+ 
+        // Scroll animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+ 
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    </script>
+ 
+</body>
+</html>
